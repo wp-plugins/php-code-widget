@@ -1,6 +1,6 @@
 === PHP Code Widget ===
 Contributors: Otto
-Donate link: http://ottodestruct.com
+Donate link: http://zme.amazon.com/exec/varzea/pay/T1PW4BG07GXM79
 Tags: php, widget, execphp
 Requires at least: 2.5
 Tested up to: 2.5

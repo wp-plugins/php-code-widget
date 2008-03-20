@@ -5,9 +5,9 @@ Description: Like the Text widget, but it will take PHP code as well. Heavily de
 Author: Otto
 Version: 1.1
 Author URI: http://ottodestruct.com
+Plugin URI: http://wordpress.org/extend/plugins/php-code-widget/
 */
 
-// See large comment section at end of this file
 function widget_execphp($args, $widget_args = 1) {
 	extract( $args, EXTR_SKIP );
 	if ( is_numeric($widget_args) )

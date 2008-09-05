@@ -3,7 +3,7 @@ Contributors: Otto
 Donate link: http://zme.amazon.com/exec/varzea/pay/T1PW4BG07GXM79
 Tags: php, widget, execphp
 Requires at least: 2.5
-Tested up to: 2.5
+Tested up to: 2.7
 Stable tag: 1.1
 
 Like the Text widget, but also allows working PHP code to be inserted.

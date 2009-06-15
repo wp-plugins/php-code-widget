@@ -64,7 +64,7 @@ function widget_execphp_control($widget_args) {
 		foreach ( $this_sidebar as $_widget_id ) {
 			if ( 'widget_execphp' == $wp_registered_widgets[$_widget_id]['callback'] && isset($wp_registered_widgets[$_widget_id]['params'][0]['number']) ) {
 				$widget_number = $wp_registered_widgets[$_widget_id]['params'][0]['number'];
-				unset($options[$widget_number]);
+				if ( !in_array( "execphp-$widget_number", $_POST['widget-id'] ) ) unset($options[$widget_number]);
 			}
 		}
 

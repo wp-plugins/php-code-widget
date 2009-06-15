@@ -3,8 +3,8 @@ Contributors: Otto
 Donate link: http://zme.amazon.com/exec/varzea/pay/T1PW4BG07GXM79
 Tags: php, widget, execphp
 Requires at least: 2.5
-Tested up to: 2.7
-Stable tag: 1.1
+Tested up to: 2.8
+Stable tag: 1.2
 
 Like the Text widget, but also allows working PHP code to be inserted.
 
@@ -25,7 +25,7 @@ recognized.
 
 == Frequently Asked Questions ==
 
-= There's some kind of error on line 27! =
+= There's some kind of error on line 37! =
 
 That error means that your PHP code is incorrect or otherwise broken. 
 

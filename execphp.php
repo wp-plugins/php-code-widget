@@ -3,7 +3,7 @@
 Plugin Name: Executable PHP widget
 Description: Like the Text widget, but it will take PHP code as well. Heavily derived from the Text widget code in WordPress.
 Author: Otto
-Version: 1.1
+Version: 1.2
 Author URI: http://ottodestruct.com
 Plugin URI: http://wordpress.org/extend/plugins/php-code-widget/
 */

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=otto%
 Tags: php, widget, execphp
 Requires at least: 2.8
 Tested up to: 2.9
-Stable tag: 2.0
+Stable tag: 2.1
 
 Like the Text widget, but also allows working PHP code to be inserted.
 

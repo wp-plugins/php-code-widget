@@ -1,134 +1,78 @@
 <?php
 /*
 Plugin Name: Executable PHP widget
+Plugin URI: http://wordpress.org/extend/plugins/php-code-widget/
 Description: Like the Text widget, but it will take PHP code as well. Heavily derived from the Text widget code in WordPress.
 Author: Otto
-Version: 1.2
+Version: 2.0
 Author URI: http://ottodestruct.com
-Plugin URI: http://wordpress.org/extend/plugins/php-code-widget/
-*/
-/*
+
+    Copyright 2009  Samuel Wood  (email : otto@ottodestruct.com)
+
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License version 2, 
-    as published by the Free Software Foundation.
+    as published by the Free Software Foundation. 
+    
+    You may NOT assume that you can use any other version of the GPL.
 
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
+    
+    The license for this software can likely be found here: 
+    http://www.gnu.org/licenses/gpl-2.0.html
+    
 */
 
-function widget_execphp($args, $widget_args = 1) {
-	extract( $args, EXTR_SKIP );
-	if ( is_numeric($widget_args) )
-		$widget_args = array( 'number' => $widget_args );
-	$widget_args = wp_parse_args( $widget_args, array( 'number' => -1 ) );
-	extract( $widget_args, EXTR_SKIP );
+class PHP_Code_Widget extends WP_Widget {
 
-	$options = get_option('widget_execphp');
-	if ( !isset($options[$number]) )
-		return;
+	function PHP_Code_Widget() {
+		$widget_ops = array('classname' => 'widget_execphp', 'description' => __('Arbitrary text, HTML, or PHP Code'));
+		$control_ops = array('width' => 400, 'height' => 350);
+		$this->WP_Widget('execphp', __('PHP Code'), $widget_ops, $control_ops);
+	}
 
-	$title = $options[$number]['title'];
-	$text = apply_filters( 'widget_execphp', $options[$number]['text'] );
-?>
-		<?php echo $before_widget; ?>
-			<?php if ( !empty( $title ) ) { echo $before_title . $title . $after_title; } ?>
-			<div class="execphpwidget"><?php eval('?>'.$text); ?></div>
-		<?php echo $after_widget; ?>
-<?php
-}
+	function widget( $args, $instance ) {
+		extract($args);
+		$title = apply_filters( 'widget_title', empty($instance['title']) ? '' : $instance['title'], $instance );
+		$text = apply_filters( 'widget_execphp', $instance['text'], $instance );
+		echo $before_widget;
+		if ( !empty( $title ) ) { echo $before_title . $title . $after_title; } 
+			ob_start();
+			eval('?>'.$text);
+			$text = ob_get_contents();
+			ob_end_clean();
+			?>			
+			<div class="execphpwidget"><?php echo wpautop($text) ; ?></div>
+		<?php
+		echo $after_widget;
+	}
 
-function widget_execphp_control($widget_args) {
-	global $wp_registered_widgets;
-	static $updated = false;
-
-	if ( is_numeric($widget_args) )
-		$widget_args = array( 'number' => $widget_args );
-	$widget_args = wp_parse_args( $widget_args, array( 'number' => -1 ) );
-	extract( $widget_args, EXTR_SKIP );
-
-	$options = get_option('widget_execphp');
-	if ( !is_array($options) )
-		$options = array();
-
-	if ( !$updated && !empty($_POST['sidebar']) ) {
-		$sidebar = (string) $_POST['sidebar'];
-
-		$sidebars_widgets = wp_get_sidebars_widgets();
-		if ( isset($sidebars_widgets[$sidebar]) )
-			$this_sidebar =& $sidebars_widgets[$sidebar];
+	function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+		$instance['title'] = strip_tags($new_instance['title']);
+		if ( current_user_can('unfiltered_html') )
+			$instance['text'] =  $new_instance['text'];
 		else
-			$this_sidebar = array();
-
-		foreach ( $this_sidebar as $_widget_id ) {
-			if ( 'widget_execphp' == $wp_registered_widgets[$_widget_id]['callback'] && isset($wp_registered_widgets[$_widget_id]['params'][0]['number']) ) {
-				$widget_number = $wp_registered_widgets[$_widget_id]['params'][0]['number'];
-				if ( !in_array( "execphp-$widget_number", $_POST['widget-id'] ) ) unset($options[$widget_number]);
-			}
-		}
-
-		foreach ( (array) $_POST['widget-execphp'] as $widget_number => $widget_text ) {
-			$title = strip_tags(stripslashes($widget_text['title']));
-			if ( current_user_can('unfiltered_html') )
-				$text = stripslashes( $widget_text['text'] );
-			else
-				$text = stripslashes(wp_filter_post_kses( $widget_text['text'] ));
-			$options[$widget_number] = compact( 'title', 'text' );
-		}
-
-		update_option('widget_execphp', $options);
-		$updated = true;
+			$instance['text'] = stripslashes( wp_filter_post_kses( $new_instance['text'] ) );
+		$instance['filter'] = isset($new_instance['filter']);
+		return $instance;
 	}
 
-	if ( -1 == $number ) {
-		$title = '';
-		$text = '';
-		$number = '%i%';
-	} else {
-		$title = attribute_escape($options[$number]['title']);
-		$text = format_to_edit($options[$number]['text']);
-	}
+	function form( $instance ) {
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'text' => '' ) );
+		$title = strip_tags($instance['title']);
+		$text = format_to_edit($instance['text']);
 ?>
-		<p>
-			<input class="widefat" id="execphp-title-<?php echo $number; ?>" name="widget-execphp[<?php echo $number; ?>][title]" type="text" value="<?php echo $title; ?>" />
-			<p>PHP Code (MUST be enclosed in &lt;?php and ?&gt; tags!):</p>
-			<textarea class="widefat" rows="16" cols="20" id="execphp-text-<?php echo $number; ?>" name="widget-execphp[<?php echo $number; ?>][text]"><?php echo $text; ?></textarea>
-			<input type="hidden" id="execphp-submit-<?php echo $number; ?>" name="execphp-submit-<?php echo $number; ?>" value="1" />
-		</p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+
+		<textarea class="widefat" rows="16" cols="20" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>"><?php echo $text; ?></textarea>
+
+		<p><input id="<?php echo $this->get_field_id('filter'); ?>" name="<?php echo $this->get_field_name('filter'); ?>" type="checkbox" <?php checked(isset($instance['filter']) ? $instance['filter'] : 0); ?> />&nbsp;<label for="<?php echo $this->get_field_id('filter'); ?>"><?php _e('Automatically add paragraphs.'); ?></label></p>
 <?php
+	}
 }
 
-function widget_execphp_register() {
-
-	// Check for the required API functions
-	if ( !function_exists('wp_register_sidebar_widget') || !function_exists('wp_register_widget_control') )
-		return;
-
-	if ( !$options = get_option('widget_execphp') )
-		$options = array();
-	$widget_ops = array('classname' => 'widget_execphp', 'description' => __('Arbitrary text, HTML, or PHP code'));
-	$control_ops = array('width' => 460, 'height' => 350, 'id_base' => 'execphp');
-	$name = __('PHP Code');
-
-	$id = false;
-	foreach ( array_keys($options) as $o ) {
-		// Old widgets can have null values for some reason
-		if ( !isset($options[$o]['title']) || !isset($options[$o]['text']) )
-			continue;
-		$id = "execphp-$o"; // Never never never translate an id
-		wp_register_sidebar_widget($id, $name, 'widget_execphp', $widget_ops, array( 'number' => $o ));
-		wp_register_widget_control($id, $name, 'widget_execphp_control', $control_ops, array( 'number' => $o ));
-	}
-	
-	// If there are none, we register the widget's existance with a generic template
-	if ( !$id ) {
-		wp_register_sidebar_widget( 'execphp-1', $name, 'widget_execphp', $widget_ops, array( 'number' => -1 ) );
-		wp_register_widget_control( 'execphp-1', $name, 'widget_execphp_control', $control_ops, array( 'number' => -1 ) );
-	}
-	
-}
-
-add_action( 'widgets_init', 'widget_execphp_register' );
-
-?>
+add_action('widgets_init', create_function('', 'return register_widget("PHP_Code_Widget");'));

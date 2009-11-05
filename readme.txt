@@ -54,6 +54,9 @@ is yours. Please don't email me about that error.
 2. The output of the widget on the site.
 
 == Changelog ==
+= 2.1 =
+* Fixed broken wpautop filter. Checkbox on widget works now.
+
 = 2.0 =
 * Changed widget to use new Class methods for creating widget. This simplifies the widget and should eliminate any problems with it losing code or disappearing from sidebars and so forth.
 * WARNING: Version 2.0 REQUIRES WordPress 2.8 and up. It will not work with older versions.

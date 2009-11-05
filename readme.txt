@@ -17,7 +17,7 @@ This makes it easier to migrate to a widget-based theme.
 All PHP code must be enclosed in the standard <?php and ?> tags for it to be 
 recognized.
 
-WARNING: Upgrading to 2.0 from 1.2 will cause loss of your existing widgets.
+WARNING: Upgrading to 2.0 from 1.2 may cause loss of your existing widgets.
 Copy the code you have in them elsewhere first, then recreate your widgets
 afterwards.
 
@@ -57,4 +57,4 @@ is yours. Please don't email me about that error.
 = 2.0 =
 * Changed widget to use new Class methods for creating widget. This simplifies the widget and should eliminate any problems with it losing code or disappearing from sidebars and so forth.
 * WARNING: Version 2.0 REQUIRES WordPress 2.8 and up. It will not work with older versions.
-* WARNING: Upgrading this widget from 1.x will cause the widget to LOSE YOUR EXISTING SIDEBAR CODE. Copy and paste the existing code somewhere else before upgrading, then recreate the widgets afterwards.
+* WARNING: Upgrading this widget from 1.x might cause the widget to LOSE YOUR EXISTING SIDEBAR CODE. Copy and paste the existing code somewhere else before upgrading (just in case), then recreate the widgets afterwards.

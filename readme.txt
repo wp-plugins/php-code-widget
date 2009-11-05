@@ -17,6 +17,10 @@ This makes it easier to migrate to a widget-based theme.
 All PHP code must be enclosed in the standard <?php and ?> tags for it to be 
 recognized.
 
+WARNING: Upgrading to 2.0 from 1.2 will cause loss of your existing widgets.
+Copy the code you have in them elsewhere first, then recreate your widgets
+afterwards.
+
 == Installation ==
 
 1. Upload `execphp.php` to the `/wp-content/plugins/` directory

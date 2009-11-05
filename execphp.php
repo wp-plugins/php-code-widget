@@ -44,7 +44,7 @@ class PHP_Code_Widget extends WP_Widget {
 			$text = ob_get_contents();
 			ob_end_clean();
 			?>			
-			<div class="execphpwidget"><?php if ($instance['filter ']) echo wpautop($text); else echo $text; ?></div>
+			<div class="execphpwidget"><?php echo $instance['filter'] ? wpautop($text) : $text; ?></div>
 		<?php
 		echo $after_widget;
 	}

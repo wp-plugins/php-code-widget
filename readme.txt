@@ -3,7 +3,7 @@ Contributors: Otto
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=otto%40ottodestruct%2ecom
 Tags: php, widget, execphp
 Requires at least: 2.8
-Tested up to: 2.9
+Tested up to: 2.9.1
 Stable tag: 2.1
 
 Like the Text widget, but also allows working PHP code to be inserted.

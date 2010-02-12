@@ -6,6 +6,7 @@ Description: Like the Text widget, but it will take PHP code as well. Heavily de
 Author: Otto
 Version: 2.1
 Author URI: http://ottodestruct.com
+License: GPL2
 
     Copyright 2009  Samuel Wood  (email : otto@ottodestruct.com)
 

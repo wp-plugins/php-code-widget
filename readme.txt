@@ -1,9 +1,9 @@
 === PHP Code Widget ===
-Contributors: Otto
+Contributors: Otto42
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=otto%40ottodestruct%2ecom
 Tags: php, widget, execphp
 Requires at least: 2.8
-Tested up to: 3.0
+Tested up to: 3.0.1
 Stable tag: 2.1
 
 Like the Text widget, but also allows working PHP code to be inserted.
@@ -23,7 +23,7 @@ afterwards.
 
 Want regular updates? Become a fan of my sites on Facebook!
 http://www.facebook.com/apps/application.php?id=116002660893
-http://www.facebook.com/apps/application.php?id=334947428931
+http://www.facebook.com/ottopress
 
 Or follow my sites on Twitter!
 http://twitter.com/ottodestruct

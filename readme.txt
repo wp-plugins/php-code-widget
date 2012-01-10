@@ -47,7 +47,7 @@ No, it's not.
 Really. 
 
 This widget has no bugs, it's about the simplest widget one can possibly 
-make. Any errors coming out of the "execphp,php" file are errors in code you 
+make. Any errors coming out of the "execphp.php" file are errors in code you 
 put into one of the widgets. The reason that it shows the error being in the
 execphp.php file is because that is where your code is actually being run
 from.

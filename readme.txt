@@ -21,6 +21,13 @@ WARNING: Upgrading to 2.0 from 1.2 may cause loss of your existing widgets.
 Copy the code you have in them elsewhere first, then recreate your widgets
 afterwards.
 
+Want regular updates? Become a fan of my sites on Facebook!
+http://www.facebook.com/apps/application.php?id=116002660893
+http://www.facebook.com/ottopress
+
+Or follow my sites on Twitter!
+http://twitter.com/ottodestruct
+
 == Installation ==
 
 1. Upload `execphp.php` to the `/wp-content/plugins/` directory
@@ -40,7 +47,7 @@ No, it's not.
 Really. 
 
 This widget has no bugs, it's about the simplest widget one can possibly 
-make. Any errors coming out of the "execphp,php" file are errors in code you 
+make. Any errors coming out of the "execphp.php" file are errors in code you 
 put into one of the widgets. The reason that it shows the error being in the
 execphp.php file is because that is where your code is actually being run
 from.

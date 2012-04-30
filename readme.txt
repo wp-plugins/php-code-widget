@@ -5,6 +5,8 @@ Tags: php, widget, execphp
 Requires at least: 2.8
 Tested up to: 3.3
 Stable tag: 2.1
+License: GPLv2
+License URI: http://www.opensource.org/licenses/GPL-2.0
 
 Like the Text widget, but also allows working PHP code to be inserted.
 

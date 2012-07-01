@@ -3,7 +3,7 @@ Contributors: Otto42
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=otto%40ottodestruct%2ecom
 Tags: php, widget, execphp
 Requires at least: 2.8
-Tested up to: 3.3
+Tested up to: 3.4
 Stable tag: 2.1
 License: GPLv2
 License URI: http://www.opensource.org/licenses/GPL-2.0
@@ -23,12 +23,15 @@ WARNING: Upgrading to 2.0 from 1.2 may cause loss of your existing widgets.
 Copy the code you have in them elsewhere first, then recreate your widgets
 afterwards.
 
-Want regular updates? Become a fan of my sites on Facebook!
-http://www.facebook.com/apps/application.php?id=116002660893
-http://www.facebook.com/ottopress
+Want regular WordPress news and code updates? Become a fan of my sites on Facebook!
+
+* http://www.facebook.com/pages/Nothing-to-See-Here/241409175928000
+* http://www.facebook.com/ottopress
 
 Or follow my sites on Twitter!
-http://twitter.com/ottodestruct
+
+* http://twitter.com/ottodestruct
+
 
 == Installation ==
 

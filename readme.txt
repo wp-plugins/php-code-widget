@@ -16,7 +16,7 @@ The normal Text widget allows you to insert arbitrary Text and/or HTML code. Thi
 
 This can make it easier to migrate to a widget-based theme. However, this plugin should not be used long term, as anybody with access to edit the widgets on your site will be able to execute arbitrary PHP code.
 
-All PHP code must be enclosed in the standard php opening and closing tags ( <?php and ?> ) for it to be recognized and executed.
+All PHP code must be enclosed in the standard php opening and closing tags ( `<?php` and `?>` ) for it to be recognized and executed.
 
 Only users with the unfiltered_html role will be allowed to insert unfiltered HTML. This includes PHP code, so users without admin or editor permissions will not be able to use this to execute code, even if they have widget editing permissions.
 

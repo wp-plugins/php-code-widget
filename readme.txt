@@ -3,7 +3,7 @@ Contributors: Otto42
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=otto%40ottodestruct%2ecom
 Tags: php, widget, execphp
 Requires at least: 2.8
-Tested up to: 3.7
+Tested up to: 3.8
 Stable tag: 2.2
 License: GPLv2
 License URI: http://www.opensource.org/licenses/GPL-2.0

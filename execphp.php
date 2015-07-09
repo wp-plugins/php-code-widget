@@ -14,7 +14,7 @@ class PHP_Code_Widget extends WP_Widget {
 		load_plugin_textdomain( 'php-code-widget', false, dirname( plugin_basename( __FILE__ ) ) );
 		$widget_ops = array('classname' => 'widget_execphp', 'description' => __('Arbitrary text, HTML, or PHP Code', 'php-code-widget'));
 		$control_ops = array('width' => 400, 'height' => 350);
-		$this->__construct('execphp', __('PHP Code', 'php-code-widget'), $widget_ops, $control_ops);
+		parent::__construct('execphp', __('PHP Code', 'php-code-widget'), $widget_ops, $control_ops);
 	}
 
 	function widget( $args, $instance ) {

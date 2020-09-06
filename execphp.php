@@ -59,4 +59,7 @@ class PHP_Code_Widget extends WP_Widget {
 	}
 }
 
-add_action('widgets_init', create_function('', 'return register_widget("PHP_Code_Widget");'));
+
+if (version_compare(PHP_VERSION, '5.3.0') >= 0) {
+		add_action('widgets_init', function(){register_widget('PHP_Code_Widget' );});
+}
